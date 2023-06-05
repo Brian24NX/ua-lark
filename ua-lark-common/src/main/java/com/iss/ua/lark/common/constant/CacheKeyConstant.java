@@ -9,6 +9,7 @@ public class CacheKeyConstant {
 
     public interface MoudleNames{
         String DEMO_USER_INFO = "demo_user_info";
+        String STORE = "t_store";
     }
 
     public interface DurationNames {
