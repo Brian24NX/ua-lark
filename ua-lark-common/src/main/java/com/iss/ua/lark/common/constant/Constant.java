@@ -14,4 +14,5 @@ public class Constant {
 	public static final String LANG = "lang";
 	public static final String LANG_CONNECTOR = "_";
 	public static final Integer DEFAULT_PAGE_SIZE = 10;
+	public static final String ACCESS_TOKEN = "access_token";
 }

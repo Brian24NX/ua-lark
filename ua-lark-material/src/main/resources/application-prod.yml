@@ -27,3 +27,6 @@ spring:
       keepAlive: true
       maxPoolPreparedStatementPerConnectionSize: 50
       filters: stat,wall,log4j2
+lark:
+  appId: cli_a4faccf706f8902f
+  appSecret: TB7fVlKkPKJbPn2JSFjGqgFG1sC8WfpY

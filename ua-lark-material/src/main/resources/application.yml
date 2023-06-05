@@ -8,7 +8,7 @@
 #-------------------------------------------------------
 
 server:
-  port: 8090
+  port: 8010
   servlet:
     context-path: /ua-material-api/
 
@@ -25,7 +25,7 @@ spring:
     caffeine:
       #expireAfterAccess:多久没方位就失效,expireAfterWrite:多久没写入就失效,refreshAfterWrite:N秒后的下次一访问更新缓存.
       #如果expireAfterWrite和expireAfterAccess同时存在，以expireAfterWrite为准。
-      spec: initialCapacity=50,maximumSize=500,expireAfterWrite=2h,refreshAfterWrite=3h
+      spec: initialCapniacity=50,maximumSize=500,expireAfterWrite=2h,refreshAfterWrite=3h
   messages:
     encoding: utf-8
     # 国际化资源文件路径（配置文件路径）

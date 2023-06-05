@@ -51,7 +51,7 @@ logging:
 com:
   hanson:
     user-interceptor:
-      excludePathPatterns: /favicon.ico,/file/upload,/api/v1/i18n
+      excludePathPatterns: /favicon.ico,/file/upload,/api/v1/i18n,/login
     sign-filter:
       excludePathPatterns: /favicon.ico,/file/upload,/api/v1/i18n
 hanson:
@@ -68,3 +68,12 @@ aliyun:
     expiration-ms: 31536000000
     defaultPath:
     defaultModuleName: sys_file
+
+lark:
+  appId: cli_a4faccf706f8902f
+  appSecret: TB7fVlKkPKJbPn2JSFjGqgFG1sC8WfpY
+  jwt:
+    expireTime: 3600000
+    key: under-armour-jwt-test
+
+

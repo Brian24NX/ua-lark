@@ -1,11 +1,13 @@
 package com.iss.ua.lark.interceptor;
 
+import cn.hutool.jwt.JWT;
 import com.hanson.rest.BizException;
-import com.hanson.rest.enmus.ErrorCodeEnum;
 import com.hanson.util.RequestUtils;
-import com.iss.ua.lark.common.bo.UserInfoBo;
+
+import com.iss.ua.lark.common.constant.Constant;
+import com.iss.ua.lark.common.enums.error.UserErrorCodeEnum;
+import com.iss.ua.lark.common.util.JwtUtil;
 import com.iss.ua.lark.common.util.UserThreadLocalUtil;
-import com.iss.ua.lark.serevice.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.Objects;
-
-import static com.iss.ua.lark.common.constant.Constant.USER_CODE;
 
 /**
  * @author: HansonHu
@@ -26,10 +25,12 @@ import static com.iss.ua.lark.common.constant.Constant.USER_CODE;
  **/
 @Component
 @Slf4j
-public class UserInfoInterceptor implements HandlerInterceptor {
+public class StaffInfoInterceptor implements HandlerInterceptor {
 
+//    @Autowired
+//    private StaffInfoService staffInfoService;
     @Autowired
-    private UserInfoService userInfoService;
+    private JwtUtil jwtUtil;
 
     @Value("${com.hanson.user-interceptor.excludePathPatterns:}")
     private String excludePathPatterns;
@@ -48,15 +49,25 @@ public class UserInfoInterceptor implements HandlerInterceptor {
         if (isURIExcluded(request.getRequestURI())) {
             return true;
         }
-        String userCode = request.getHeader(USER_CODE);
-        if(StringUtils.isBlank(userCode)){
-            throw new BizException(ErrorCodeEnum.INVALID_PARAMETER);
+
+        String accessToken = request.getHeader(Constant.ACCESS_TOKEN);
+        if(StringUtils.isBlank(accessToken)){
+            throw new BizException(UserErrorCodeEnum.TOKEN_BLANK);
         }
-        UserInfoBo userInfoBo = userInfoService.getByCode(userCode);
-        if (Objects.isNull(userInfoBo)) {
-            return false;
+        try{
+            if (!jwtUtil.verifyToken(accessToken)) {
+                throw new BizException(UserErrorCodeEnum.TOKEN_FAIL);
+            }
+        }catch (Exception e){
+            throw new BizException(UserErrorCodeEnum.TOKEN_FAIL);
         }
-        UserThreadLocalUtil.addCurrentUser(userInfoBo);
+        Object uid = JWT.of(accessToken).getPayload("uid");
+        String staffCode = String.valueOf(uid);
+//        StaffBo staffBo = staffInfoService.getStaffByStaffCode(staffCode, true);
+//        if (Objects.isNull(staffCode)) {
+//            return false;
+//        }
+        UserThreadLocalUtil.addCurrentUser(null);
         return true;
     }
 

@@ -1,6 +1,6 @@
 package com.iss.ua.lark.configuration;
 
-import com.iss.ua.lark.interceptor.UserInfoInterceptor;
+import com.iss.ua.lark.interceptor.StaffInfoInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class UserInterceptorConfiguration implements WebMvcConfigurer {
     @Autowired
-    private UserInfoInterceptor userInfoInterceptor;
+    private StaffInfoInterceptor staffInfoInterceptor;
 
     /**
      * 拦截器，将用户信息放入threadLocal
@@ -26,7 +26,7 @@ public class UserInterceptorConfiguration implements WebMvcConfigurer {
         /**
          * 注册自定义的显示 ResponseResult 注解的拦截器
          */
-        registry.addInterceptor(userInfoInterceptor)
+        registry.addInterceptor(staffInfoInterceptor)
                 // 拦截配置
                 .addPathPatterns("/**")
                 // 排除配置

@@ -10,6 +10,8 @@ import lombok.Getter;
 @Getter
 public enum UserErrorCodeEnum implements ErrorCode {
     FROZEN_USER("000101", "com.hanson.user.frozen"),
+    TOKEN_FAIL("000106", "com.hanson.token.invalid"),
+    TOKEN_BLANK("000108", "com.hanson.token"),
     ;
 
     private String code;

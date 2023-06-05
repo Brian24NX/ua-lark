@@ -361,7 +361,7 @@ public class SignatureFilter implements Filter {
         if(keyWordMap == null || keyWordMap.size() <=0) {
             log.debug("RequestFilter env: {}", activeProfile);
             if (activeProfile.equals("stage") || activeProfile.equals("uat") || activeProfile.equals("dev")) {
-                secretKeyMap.put("hanson-web", "X2NsaWVudElkIiwic2NvcGUiOlsib2F1dGgyLXJlc29");
+                secretKeyMap.put("lark-api", "F92E2FF249C65B533E1705F829FB1C5F92Wdfr0Iuur");
                 secretKeyMap.put("hanson-exta", "OiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbW");
                 secretKeyMap.put("hanson-extb", "F1dGhvcml0aWVzIjpbIkFQUFRfQURNSU5fUkVBRCIsI");
                 secretKeyMap.put("hanson-extc", "GhfcGVybWFuZW50X2NsaWVudElkIiwic2NQVF9BRE1J");
@@ -373,7 +373,7 @@ public class SignatureFilter implements Filter {
                 secretKeyMap.put("hanson-exti", "F92E2FF249C65B533E1705F829FB1C5F92Wdfr0Iuur");
                 secretKeyMap.put("hanson-extj", "A34B8D2BBBE718CCC550D0EAAD6D9F90767677770we");
             } else {  // activeProfile.equals("prd")
-                secretKeyMap.put("hanson-web", "F1dGhvcml0aWVzIjpbIkFQUFRfQURNSU5fUkVBRCIsI");
+                secretKeyMap.put("lark-api", "659E3081A2D47D9E4FA2A24F03289935esdd989op71");
                 secretKeyMap.put("hanson-exta", "YzA5YWI5ZjBlIiwiY2xpZW50X2lkIjoidWFfcGVybWF");
                 secretKeyMap.put("hanson-extb", "WVzIjpbIkNPTkZJR19BRE1JTl9SRUFEIiwiQ09ORsyT");
                 secretKeyMap.put("hanson-extc", "G1pbiIsImF1dGhvcml0aWVzIjpbIkFQUFRfQURNSU5f");
