@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.iss.ua.lark.system.mapper.EmployeeMapper">
+
+    <select id="getEmployeeSearchList" parameterType="String" resultType="com.iss.ua.lark.system.domain.member.Employee">
+        SELECT employee_number, c_name
+        FROM t_user
+        <if test="queryParam != null and queryParam != ''">
+            WHERE c_name LIKE concat('%', #{queryParam}, '%')
+        </if>
+    </select>
+
+</mapper>

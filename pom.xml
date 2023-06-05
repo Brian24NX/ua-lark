@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.6</version> <!-- lookup parent from repository -->
+		<version>2.5.14</version> <!-- lookup parent from repository -->
 	</parent>
 
 	<groupId>com.iss.ua</groupId>
@@ -39,6 +39,23 @@
 		<hanson.mybatis-boost.version>1.1.1</hanson.mybatis-boost.version>
 		<hanson.rest-common.version>1.1.1</hanson.rest-common.version>
 		<com.aliyun.oss.version>3.14.0</com.aliyun.oss.version>
+		<poi.version>4.1.2</poi.version>
+		<velocity.version>2.3</velocity.version>
+		<jwt.version>0.9.1</jwt.version>
+		<oshi.version>6.4.0</oshi.version>
+		<kaptcha.version>2.3.3</kaptcha.version>
+		<weixin-java-cp.version>4.4.0</weixin-java-cp.version>
+
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+		<druid.version>1.2.15</druid.version>
+		<bitwalker.version>1.21</bitwalker.version>
+		<kaptcha.version>2.3.3</kaptcha.version>
+		<pagehelper.boot.version>1.4.6</pagehelper.boot.version>
+		<fastjson.version>2.0.23</fastjson.version>
+		<oshi.version>6.4.0</oshi.version>
+		<commons.io.version>2.11.0</commons.io.version>
+		<commons.fileupload.version>1.4</commons.fileupload.version>
+		<commons.collections.version>3.2.2</commons.collections.version>
 	</properties>
 
 	<dependencies>
@@ -66,6 +83,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
 		</dependency>
 
 		<dependency>
@@ -102,6 +125,18 @@
 			<dependency>
 				<groupId>com.iss.ua</groupId>
 				<artifactId>ua-lark-dao</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.iss.ua</groupId>
+				<artifactId>ua-lark-system</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.iss.ua</groupId>
+				<artifactId>ua-lark-admin-framework</artifactId>
 				<version>1.0.0-SNAPSHOT</version>
 			</dependency>
 
@@ -242,6 +277,87 @@
 				<artifactId>aliyun-sdk-oss</artifactId>
 				<version>${com.aliyun.oss.version}</version>
 			</dependency>
+
+			<!-- Token生成与解析-->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt</artifactId>
+				<version>${jwt.version}</version>
+			</dependency>
+
+			<!-- 验证码 -->
+			<dependency>
+				<groupId>pro.fessional</groupId>
+				<artifactId>kaptcha</artifactId>
+				<version>${kaptcha.version}</version>
+			</dependency>
+
+			<!-- 获取系统信息 -->
+			<dependency>
+				<groupId>com.github.oshi</groupId>
+				<artifactId>oshi-core</artifactId>
+				<version>${oshi.version}</version>
+			</dependency>
+
+			<!-- 微信客户端 -->
+			<dependency>
+				<groupId>com.github.binarywang</groupId>
+				<artifactId>weixin-java-cp</artifactId>
+				<version>${weixin-java-cp.version}</version>
+			</dependency>
+
+			<!-- 文件上传工具类 -->
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+			</dependency>
+
+			<!-- excel工具 -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+
+			<!-- 解析客户端操作系统、浏览器等 -->
+			<dependency>
+				<groupId>eu.bitwalker</groupId>
+				<artifactId>UserAgentUtils</artifactId>
+				<version>${bitwalker.version}</version>
+			</dependency>
+
+			<!-- pagehelper 分页插件 -->
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper-spring-boot-starter</artifactId>
+				<version>${pagehelper.boot.version}</version>
+			</dependency>
+			<!-- io常用工具类 -->
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons.io.version}</version>
+			</dependency>
+
+			<!-- 文件上传工具类 -->
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons.fileupload.version}</version>
+			</dependency>
+
+			<!-- excel工具 -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+			<!-- collections工具类 -->
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${commons.collections.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -282,5 +398,8 @@
     <module>ua-lark-dao</module>
     <module>ua-lark-service</module>
     <module>ua-lark-material</module>
+    <module>ua-lark-admin</module>
+    <module>ua-lark-system</module>
+    <module>ua-lark-admin-framework</module>
   </modules>
 </project>
