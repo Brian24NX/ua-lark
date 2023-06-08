@@ -105,14 +105,15 @@ public class SoMaterialCategoryServiceImpl implements ISoMaterialCategoryService
     }
 
     @Override
-    public List<SoMaterialCategoryReturn> selectSoMaterialCategoryList2(SoMaterialCategoryParam param) {
-        List<SoMaterialCategory> list = soMaterialCategoryMapper.selectSoMaterialCategoryList2(param);
-        return null;
+    public List<SoMaterialCategory> selectSoMaterialCategoryList2(SoMaterialCategory soMaterialCategory)
+    {
+        return soMaterialCategoryMapper.selectSoMaterialCategoryList(soMaterialCategory);
     }
 
     @Override
     public List<TreeSelect> selectCategoryTreeList(SoMaterialCategory param) {
-        List<SoMaterialCategory> categories = SpringUtils.getAopProxy(this).selectSoMaterialCategoryList(param);
+//        List<SoMaterialCategory> categories = SpringUtils.getAopProxy(this).selectSoMaterialCategoryList2(param);
+        List<SoMaterialCategory> categories = selectSoMaterialCategoryList2(param);
         return buildCategoryTreeSelect(categories);
     }
     @Override

@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2023-06-08
  */
 @RestController
-@RequestMapping("/system/material")
+@RequestMapping("/admin/material")
 public class SoMaterialController extends BaseController
 {
     @Autowired

@@ -62,5 +62,5 @@ public interface SoMaterialCategoryMapper
      */
     public int deleteSoMaterialCategoryByCids(Long[] cids);
 
-    List<SoMaterialCategory> selectSoMaterialCategoryList2(SoMaterialCategoryParam param);
+    List<SoMaterialCategory> selectSoMaterialCategoryList2(SoMaterialCategory param);
 }

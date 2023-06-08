@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2023-06-08
  */
 @RestController
-@RequestMapping("/system/category")
+@RequestMapping("/admin/category")
 public class SoMaterialCategoryController extends BaseController
 {
     @Autowired
@@ -41,8 +41,6 @@ public class SoMaterialCategoryController extends BaseController
      * 查询物料类别列表
      */
 //    @PreAuthorize("@ss.hasPermi('system:category:list')")
-//    @GetMapping("/list")
-    @PreAuthorize("@ss.hasPermi('system:category:list')")
     @GetMapping("/categoryTree")
     public AjaxResult categoryTree(SoMaterialCategory param) {
         return success(soMaterialCategoryService.selectCategoryTreeList(param));

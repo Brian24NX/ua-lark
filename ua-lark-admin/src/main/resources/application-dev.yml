@@ -6,7 +6,7 @@ spring:
     druid:
       # 主库数据源
       master:
-        url: jdbc:mysql://106.14.117.64:3306/hanson_temp?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&tinyInt1isBit=false
+        url: jdbc:mysql://106.14.117.64:3306/ua_lark?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&tinyInt1isBit=false
         username: root
         password: D7PTYSfZo5Ef
       # 从库数据源

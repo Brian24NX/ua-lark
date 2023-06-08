@@ -39,14 +39,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectSoMaterialCategoryList2" parameterType="SoMaterialCategory" resultMap="SoMaterialCategoryResult">
         <include refid="selectSoMaterialCategoryVo"/>
         <where>
-            <if test="rootId != null "> and root_id = #{rootId}</if>
-            <if test="parentId != null "> and parent_id = #{parentId}</if>
+            <if test="cid != null and cid != 0"> AND cid = #{cid} </if>
+            <if test="parentId != null and parentId != 0"> and parent_id = #{parentId}</if>
             <if test="categoryName != null  and categoryName != ''"> and category_name like concat('%', #{categoryName}, '%')</if>
-            <if test="categoryPath != null  and categoryPath != ''"> and category_path = #{categoryPath}</if>
-            <if test="corder != null "> and corder = #{corder}</if>
-            <if test="createUser != null  and createUser != ''"> and create_user = #{createUser}</if>
-            <if test="updateUser != null  and updateUser != ''"> and update_user = #{updateUser}</if>
             <if test="tenantCode != null  and tenantCode != ''"> and tenant_code = #{tenantCode}</if>
+            order by parent_id, corder
         </where>
     </select>
     

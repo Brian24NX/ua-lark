@@ -64,7 +64,7 @@ public interface ISoMaterialCategoryService
      */
     public int deleteSoMaterialCategoryByCid(Long cid);
 
-    List<SoMaterialCategoryReturn> selectSoMaterialCategoryList2(SoMaterialCategoryParam param);
+    List<SoMaterialCategory> selectSoMaterialCategoryList2(SoMaterialCategory param);
 
     List<TreeSelect> selectCategoryTreeList(SoMaterialCategory param);
     List<TreeSelect> buildCategoryTreeSelect(List<SoMaterialCategory> categories);
