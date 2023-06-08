@@ -20,9 +20,10 @@ public class UserInfoBo {
 	/**
 	 *
 	 */
-	@ApiModelProperty
 	private Long id;
 
+	@ApiModelProperty(value="租户Id",name="tenantId")
+	private Long tenantId;
 	/**
 	 * 用户编号
 	 */
@@ -46,4 +47,5 @@ public class UserInfoBo {
 	 * 手机号
 	 */
 	private String mobile;
+
 }

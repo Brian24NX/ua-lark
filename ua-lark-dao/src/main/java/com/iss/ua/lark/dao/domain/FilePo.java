@@ -30,6 +30,12 @@ public class FilePo implements Serializable {
     private Long id;
 
     /**
+     * 租户Id
+     */
+    @TableField("tenant_id")
+    private String tenantId;
+
+    /**
      * 原始文件名
      */
     @TableField("original_file_name")

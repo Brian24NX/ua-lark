@@ -1,6 +1,7 @@
 package com.iss.ua.lark.common.bo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -28,6 +29,9 @@ public class FileBo implements Serializable {
     @ApiModelProperty(value = "ID")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
+
+    @ApiModelProperty(value = "租户Id")
+    private String tenantId;
 
     @ApiModelProperty(value = "原始文件名")
     private String originalFileName;
