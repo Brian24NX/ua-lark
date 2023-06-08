@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iss.ua.lark.system.mapper.material.SoMaterialCategoryMapper">
+    
+    <resultMap type="SoMaterialCategory" id="SoMaterialCategoryResult">
+        <result property="cid"    column="cid"    />
+        <result property="rootId"    column="root_id"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="categoryName"    column="category_name"    />
+        <result property="categoryPath"    column="category_path"    />
+        <result property="corder"    column="corder"    />
+        <result property="createUser"    column="create_user"    />
+        <result property="updateUser"    column="update_user"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="tenantCode"    column="tenant_code"    />
+    </resultMap>
+
+    <sql id="selectSoMaterialCategoryVo">
+        select cid, root_id, parent_id, category_name, category_path, corder, create_user, update_user, create_time, update_time, tenant_code from so_material_category
+    </sql>
+
+    <select id="selectSoMaterialCategoryList" parameterType="SoMaterialCategory" resultMap="SoMaterialCategoryResult">
+        <include refid="selectSoMaterialCategoryVo"/>
+        <where>  
+            <if test="rootId != null "> and root_id = #{rootId}</if>
+            <if test="parentId != null "> and parent_id = #{parentId}</if>
+            <if test="categoryName != null  and categoryName != ''"> and category_name like concat('%', #{categoryName}, '%')</if>
+            <if test="categoryPath != null  and categoryPath != ''"> and category_path = #{categoryPath}</if>
+            <if test="corder != null "> and corder = #{corder}</if>
+            <if test="createUser != null  and createUser != ''"> and create_user = #{createUser}</if>
+            <if test="updateUser != null  and updateUser != ''"> and update_user = #{updateUser}</if>
+            <if test="tenantCode != null  and tenantCode != ''"> and tenant_code = #{tenantCode}</if>
+        </where>
+    </select>
+
+    <select id="selectSoMaterialCategoryList2" parameterType="SoMaterialCategory" resultMap="SoMaterialCategoryResult">
+        <include refid="selectSoMaterialCategoryVo"/>
+        <where>
+            <if test="rootId != null "> and root_id = #{rootId}</if>
+            <if test="parentId != null "> and parent_id = #{parentId}</if>
+            <if test="categoryName != null  and categoryName != ''"> and category_name like concat('%', #{categoryName}, '%')</if>
+            <if test="categoryPath != null  and categoryPath != ''"> and category_path = #{categoryPath}</if>
+            <if test="corder != null "> and corder = #{corder}</if>
+            <if test="createUser != null  and createUser != ''"> and create_user = #{createUser}</if>
+            <if test="updateUser != null  and updateUser != ''"> and update_user = #{updateUser}</if>
+            <if test="tenantCode != null  and tenantCode != ''"> and tenant_code = #{tenantCode}</if>
+        </where>
+    </select>
+    
+    <select id="selectSoMaterialCategoryByCid" parameterType="Long" resultMap="SoMaterialCategoryResult">
+        <include refid="selectSoMaterialCategoryVo"/>
+        where cid = #{cid}
+    </select>
+        
+    <insert id="insertSoMaterialCategory" parameterType="SoMaterialCategory" useGeneratedKeys="true" keyProperty="cid">
+        insert into so_material_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="rootId != null">root_id,</if>
+            <if test="parentId != null">parent_id,</if>
+            <if test="categoryName != null and categoryName != ''">category_name,</if>
+            <if test="categoryPath != null">category_path,</if>
+            <if test="corder != null">corder,</if>
+            <if test="createUser != null">create_user,</if>
+            <if test="updateUser != null">update_user,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="tenantCode != null and tenantCode != ''">tenant_code,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="rootId != null">#{rootId},</if>
+            <if test="parentId != null">#{parentId},</if>
+            <if test="categoryName != null and categoryName != ''">#{categoryName},</if>
+            <if test="categoryPath != null">#{categoryPath},</if>
+            <if test="corder != null">#{corder},</if>
+            <if test="createUser != null">#{createUser},</if>
+            <if test="updateUser != null">#{updateUser},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="tenantCode != null and tenantCode != ''">#{tenantCode},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSoMaterialCategory" parameterType="SoMaterialCategory">
+        update so_material_category
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="rootId != null">root_id = #{rootId},</if>
+            <if test="parentId != null">parent_id = #{parentId},</if>
+            <if test="categoryName != null and categoryName != ''">category_name = #{categoryName},</if>
+            <if test="categoryPath != null">category_path = #{categoryPath},</if>
+            <if test="corder != null">corder = #{corder},</if>
+            <if test="createUser != null">create_user = #{createUser},</if>
+            <if test="updateUser != null">update_user = #{updateUser},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="tenantCode != null and tenantCode != ''">tenant_code = #{tenantCode},</if>
+        </trim>
+        where cid = #{cid}
+    </update>
+
+    <delete id="deleteSoMaterialCategoryByCid" parameterType="Long">
+        delete from so_material_category where cid = #{cid}
+    </delete>
+
+    <delete id="deleteSoMaterialCategoryByCids" parameterType="String">
+        delete from so_material_category where cid in 
+        <foreach item="cid" collection="array" open="(" separator="," close=")">
+            #{cid}
+        </foreach>
+    </delete>
+</mapper>

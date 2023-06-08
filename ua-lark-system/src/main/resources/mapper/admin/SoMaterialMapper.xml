@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iss.ua.lark.system.mapper.material.SoMaterialMapper">
+    
+    <resultMap type="SoMaterial" id="SoMaterialResult">
+        <result property="mid"    column="mid"    />
+        <result property="materialName"    column="material_name"    />
+        <result property="shortName"    column="short_name"    />
+        <result property="oriSkuCode"    column="ori_sku_code"    />
+        <result property="uaSkuCode"    column="ua_sku_code"    />
+        <result property="image"    column="image"    />
+        <result property="unit"    column="unit"    />
+        <result property="retailPrice"    column="retail_price"    />
+        <result property="costPrice"    column="cost_price"    />
+        <result property="priceUnit"    column="price_unit"    />
+        <result property="specifications"    column="specifications"    />
+        <result property="status"    column="status"    />
+        <result property="approvalStatus"    column="approval_status"    />
+        <result property="supplierCode"    column="supplier_code"    />
+        <result property="categoryId"    column="category_id"    />
+        <result property="createUser"    column="create_user"    />
+        <result property="updateUser"    column="update_user"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="tenantCode"    column="tenant_code"    />
+    </resultMap>
+
+    <sql id="selectSoMaterialVo">
+        select mid, material_name, short_name, ori_sku_code, ua_sku_code, image, unit, retail_price, cost_price, price_unit, specifications, status, approval_status, supplier_code, category_id, create_user, update_user, create_time, tenant_code from so_material
+    </sql>
+
+    <select id="selectSoMaterialList" parameterType="SoMaterial" resultMap="SoMaterialResult">
+        <include refid="selectSoMaterialVo"/>
+        <where>  
+            <if test="materialName != null  and materialName != ''"> and material_name like concat('%', #{materialName}, '%')</if>
+            <if test="shortName != null  and shortName != ''"> and short_name like concat('%', #{shortName}, '%')</if>
+            <if test="oriSkuCode != null  and oriSkuCode != ''"> and ori_sku_code = #{oriSkuCode}</if>
+            <if test="uaSkuCode != null  and uaSkuCode != ''"> and ua_sku_code = #{uaSkuCode}</if>
+            <if test="image != null "> and image = #{image}</if>
+            <if test="unit != null  and unit != ''"> and unit = #{unit}</if>
+            <if test="retailPrice != null "> and retail_price = #{retailPrice}</if>
+            <if test="costPrice != null "> and cost_price = #{costPrice}</if>
+            <if test="priceUnit != null  and priceUnit != ''"> and price_unit = #{priceUnit}</if>
+            <if test="specifications != null  and specifications != ''"> and specifications = #{specifications}</if>
+            <if test="status != null "> and status = #{status}</if>
+            <if test="approvalStatus != null "> and approval_status = #{approvalStatus}</if>
+            <if test="supplierCode != null  and supplierCode != ''"> and supplier_code = #{supplierCode}</if>
+            <if test="categoryId != null "> and category_id = #{categoryId}</if>
+            <if test="createUser != null  and createUser != ''"> and create_user = #{createUser}</if>
+            <if test="updateUser != null  and updateUser != ''"> and update_user = #{updateUser}</if>
+            <if test="tenantCode != null  and tenantCode != ''"> and tenant_code = #{tenantCode}</if>
+        </where>
+    </select>
+    
+    <select id="selectSoMaterialByMid" parameterType="Long" resultMap="SoMaterialResult">
+        <include refid="selectSoMaterialVo"/>
+        where mid = #{mid}
+    </select>
+        
+    <insert id="insertSoMaterial" parameterType="SoMaterial" useGeneratedKeys="true" keyProperty="mid">
+        insert into so_material
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="materialName != null and materialName != ''">material_name,</if>
+            <if test="shortName != null and shortName != ''">short_name,</if>
+            <if test="oriSkuCode != null and oriSkuCode != ''">ori_sku_code,</if>
+            <if test="uaSkuCode != null">ua_sku_code,</if>
+            <if test="image != null">image,</if>
+            <if test="unit != null">unit,</if>
+            <if test="retailPrice != null">retail_price,</if>
+            <if test="costPrice != null">cost_price,</if>
+            <if test="priceUnit != null and priceUnit != ''">price_unit,</if>
+            <if test="specifications != null">specifications,</if>
+            <if test="status != null">status,</if>
+            <if test="approvalStatus != null">approval_status,</if>
+            <if test="supplierCode != null">supplier_code,</if>
+            <if test="categoryId != null">category_id,</if>
+            <if test="createUser != null">create_user,</if>
+            <if test="updateUser != null">update_user,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="tenantCode != null and tenantCode != ''">tenant_code,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="materialName != null and materialName != ''">#{materialName},</if>
+            <if test="shortName != null and shortName != ''">#{shortName},</if>
+            <if test="oriSkuCode != null and oriSkuCode != ''">#{oriSkuCode},</if>
+            <if test="uaSkuCode != null">#{uaSkuCode},</if>
+            <if test="image != null">#{image},</if>
+            <if test="unit != null">#{unit},</if>
+            <if test="retailPrice != null">#{retailPrice},</if>
+            <if test="costPrice != null">#{costPrice},</if>
+            <if test="priceUnit != null and priceUnit != ''">#{priceUnit},</if>
+            <if test="specifications != null">#{specifications},</if>
+            <if test="status != null">#{status},</if>
+            <if test="approvalStatus != null">#{approvalStatus},</if>
+            <if test="supplierCode != null">#{supplierCode},</if>
+            <if test="categoryId != null">#{categoryId},</if>
+            <if test="createUser != null">#{createUser},</if>
+            <if test="updateUser != null">#{updateUser},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="tenantCode != null and tenantCode != ''">#{tenantCode},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSoMaterial" parameterType="SoMaterial">
+        update so_material
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="materialName != null and materialName != ''">material_name = #{materialName},</if>
+            <if test="shortName != null and shortName != ''">short_name = #{shortName},</if>
+            <if test="oriSkuCode != null and oriSkuCode != ''">ori_sku_code = #{oriSkuCode},</if>
+            <if test="uaSkuCode != null">ua_sku_code = #{uaSkuCode},</if>
+            <if test="image != null">image = #{image},</if>
+            <if test="unit != null">unit = #{unit},</if>
+            <if test="retailPrice != null">retail_price = #{retailPrice},</if>
+            <if test="costPrice != null">cost_price = #{costPrice},</if>
+            <if test="priceUnit != null and priceUnit != ''">price_unit = #{priceUnit},</if>
+            <if test="specifications != null">specifications = #{specifications},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="approvalStatus != null">approval_status = #{approvalStatus},</if>
+            <if test="supplierCode != null">supplier_code = #{supplierCode},</if>
+            <if test="categoryId != null">category_id = #{categoryId},</if>
+            <if test="createUser != null">create_user = #{createUser},</if>
+            <if test="updateUser != null">update_user = #{updateUser},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="tenantCode != null and tenantCode != ''">tenant_code = #{tenantCode},</if>
+        </trim>
+        where mid = #{mid}
+    </update>
+
+    <delete id="deleteSoMaterialByMid" parameterType="Long">
+        delete from so_material where mid = #{mid}
+    </delete>
+
+    <delete id="deleteSoMaterialByMids" parameterType="String">
+        delete from so_material where mid in 
+        <foreach item="mid" collection="array" open="(" separator="," close=")">
+            #{mid}
+        </foreach>
+    </delete>
+</mapper>
