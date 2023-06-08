@@ -12,7 +12,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://106.14.117.64:3306/tuitui?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&tinyInt1isBit=false
+      url: jdbc:mysql://106.14.117.64:3306/ua_lark?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai&useSSL=false&tinyInt1isBit=false
       username: root
       password: D7PTYSfZo5Ef
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -64,6 +64,18 @@ aliyun:
     endPoint: oss-cn-shanghai.aliyuncs.com
     accessKeyId: LTAI5tPYqF2SuwUzG1hFNFpo
     accessKeySecret: c5VcDlK21GVhBC8A0LFZHTkyZsu46n
+    # 指定签名URL过期时间一年。
+    expiration-ms: 31536000000
+    defaultPath:
+    defaultModuleName: sys_file
+
+aws:
+  s3:
+    bucketName: hanson-bucket
+    endPoint: oss-cn-shanghai.aliyuncs.com
+    accessKeyId: LTAI5tPYqF2SuwUzG1hFNFpo
+    accessKeySecret: c5VcDlK21GVhBC8A0LFZHTkyZsu46n
+    regionName: cn-north-1
     # 指定签名URL过期时间一年。
     expiration-ms: 31536000000
     defaultPath:

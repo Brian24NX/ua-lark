@@ -19,6 +19,7 @@ CREATE TABLE `sys_file` (
     `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `original_file_name` varchar(255) NOT NULL COMMENT '原始文件名',
     `file_name` varchar(255) NOT NULL COMMENT '文件名',
+    `suffix` varchar(20) NOT NULL COMMENT '文件后缀名',
     `path` varchar(255) NOT NULL COMMENT '路径',
     `url` varchar(255) DEFAULT NULL COMMENT 'URL',
     `size` bigint(20) unsigned DEFAULT NULL COMMENT '文件大小',

@@ -62,6 +62,11 @@
             <groupId>com.iss.ua</groupId>
             <artifactId>ua-lark-admin-framework</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.iss.ua</groupId>
+            <artifactId>ua-lark-service</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

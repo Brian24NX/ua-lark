@@ -32,6 +32,9 @@ public class FileBo implements Serializable {
     @ApiModelProperty(value = "原始文件名")
     private String originalFileName;
 
+    @ApiModelProperty(value = "文件后缀")
+    private String suffix;
+
     @ApiModelProperty(value = "文件名")
     private String fileName;
 
