@@ -1,5 +1,6 @@
 package com.iss.ua.lark.system.domain.material;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -10,6 +11,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * @author times
  * @date 2023-06-08
  */
+@ApiModel(value = "物料参数")
 public class SoMaterialCategoryParam {
 
     private static final long serialVersionUID = -922851360497796481L;
@@ -17,35 +19,35 @@ public class SoMaterialCategoryParam {
     private Long cid;
 
     /** 根类别id */
-    @ApiModelProperty(name = "根类别id")
+    @ApiModelProperty(value = "根类别id")
     private Long rootId;
 
     /** 父类别id */
-    @ApiModelProperty(name = "父类别id")
+    @ApiModelProperty(value = "父类别id")
     private Long parentId;
 
     /** 类别名 */
-    @ApiModelProperty(name = "类别名")
+    @ApiModelProperty(value = "类别名")
     private String categoryName;
 
     /** 类别路径 */
-    @ApiModelProperty(name = "类别路径")
+    @ApiModelProperty(value = "类别路径")
     private String categoryPath;
 
     /** 排序字段 */
-    @ApiModelProperty(name = "排序字段")
+    @ApiModelProperty(value = "排序字段")
     private Long corder;
 
     /** 创建人唯一code */
-    @ApiModelProperty(name = "创建人唯一code")
+    @ApiModelProperty(value = "创建人唯一code")
     private String createUser;
 
     /** 更新人唯一code */
-    @ApiModelProperty(name = "更新人唯一code")
+    @ApiModelProperty(value = "更新人唯一code")
     private String updateUser;
 
     /** 租户code */
-    @ApiModelProperty(name = "租户code")
+    @ApiModelProperty(value = "租户code")
     private String tenantCode;
 
     public void setCid(Long cid) 

@@ -3,6 +3,7 @@ package com.iss.ua.lark.controller.material;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.iss.ua.lark.common.core.domain.AjaxResult;
 import com.iss.ua.lark.common.core.domain.R;
 import com.iss.ua.lark.common.core.domain.entity.SysDept;
@@ -13,6 +14,8 @@ import com.iss.ua.lark.common.core.domain.entity.SoMaterialCategory;
 import com.iss.ua.lark.system.domain.material.SoMaterialCategoryParam;
 import com.iss.ua.lark.system.domain.material.SoMaterialCategoryReturn;
 import com.iss.ua.lark.system.service.ISoMaterialCategoryService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2023-06-08
  */
 @RestController
+@Api("物料分类接口")
 @RequestMapping("/admin/category")
 public class SoMaterialCategoryController extends BaseController
 {
@@ -42,8 +46,11 @@ public class SoMaterialCategoryController extends BaseController
      */
 //    @PreAuthorize("@ss.hasPermi('system:category:list')")
     @GetMapping("/categoryTree")
-    public AjaxResult categoryTree(SoMaterialCategory param) {
-        return success(soMaterialCategoryService.selectCategoryTreeList(param));
+    @ApiOperation("获取categoryTree，传当前用户的tenantCode")
+    public AjaxResult categoryTree(SoMaterialCategoryParam param) {
+        SoMaterialCategory sc = new SoMaterialCategory();
+        sc.setTenantCode(param.getTenantCode());
+        return success(soMaterialCategoryService.selectCategoryTreeList(sc));
     }
 
     /**
@@ -74,9 +81,9 @@ public class SoMaterialCategoryController extends BaseController
      * 获取物料类别详细信息
      */
 //    @PreAuthorize("@ss.hasPermi('system:category:query')")
-//    @GetMapping(value = "/{cid}")
-    public AjaxResult getInfo(@PathVariable("cid") Long cid)
-    {
+    @GetMapping(value = "/getInfo/{cid}")
+    @ApiOperation("获取物料详情")
+    public AjaxResult getInfo(@PathVariable("cid") Long cid) {
         return success(soMaterialCategoryService.selectSoMaterialCategoryByCid(cid));
     }
 
@@ -84,9 +91,10 @@ public class SoMaterialCategoryController extends BaseController
      * 新增物料类别
      */
 //    @PreAuthorize("@ss.hasPermi('system:category:add')")
-//    @PostMapping
-    public AjaxResult add(@RequestBody SoMaterialCategory soMaterialCategory)
-    {
+    @PostMapping("/add")
+    @ApiOperation("新增物料类别")
+    public AjaxResult add(@RequestBody SoMaterialCategoryParam param) {
+        SoMaterialCategory soMaterialCategory = BeanUtil.copyProperties(param, SoMaterialCategory.class);
         return toAjax(soMaterialCategoryService.insertSoMaterialCategory(soMaterialCategory));
     }
 
@@ -94,9 +102,10 @@ public class SoMaterialCategoryController extends BaseController
      * 修改物料类别
      */
 //    @PreAuthorize("@ss.hasPermi('system:category:edit')")
-//    @PutMapping
-    public AjaxResult edit(@RequestBody SoMaterialCategory soMaterialCategory)
-    {
+    @PutMapping("/editCategory")
+    @ApiOperation("更新物料类别")
+    public AjaxResult edit(@RequestBody SoMaterialCategoryParam param) {
+        SoMaterialCategory soMaterialCategory = BeanUtil.copyProperties(param, SoMaterialCategory.class);
         return toAjax(soMaterialCategoryService.updateSoMaterialCategory(soMaterialCategory));
     }
 
@@ -104,7 +113,8 @@ public class SoMaterialCategoryController extends BaseController
      * 删除物料类别
      */
 //    @PreAuthorize("@ss.hasPermi('system:category:remove')")
-//	@DeleteMapping("/{cids}")
+	@DeleteMapping("/delCategory/{cids}")
+    @ApiOperation("删除物料类型")
     public AjaxResult remove(@PathVariable Long[] cids)
     {
         return toAjax(soMaterialCategoryService.deleteSoMaterialCategoryByCids(cids));

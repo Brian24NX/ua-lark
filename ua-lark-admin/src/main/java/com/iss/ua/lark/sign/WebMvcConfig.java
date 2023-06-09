@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(checkInterceptor()).excludePathPatterns("/", "/**/*.png",
+        registry.addInterceptor(checkInterceptor()).excludePathPatterns("/", "/**/*.png","/error",
                 "/*.html", "/**/*.html", "/**/*.css", "/**/*.js",
                 "/swagger-ui.html", "/swagger-resources/**", "/webjars/**", "/*/api-docs", "/druid/**");
     }
