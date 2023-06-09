@@ -23,6 +23,15 @@ public class TreeSelect implements Serializable
     /** 节点名称 */
     private String label;
 
+    /** 节点path */
+    private String path;
+
+    /** 根节点id */
+    private Long rootId;
+
+    /** 父节点id */
+    private Long parentId;
+
     /** 子节点 */
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<TreeSelect> children;
@@ -50,7 +59,34 @@ public class TreeSelect implements Serializable
     {
         this.id = category.getCid();
         this.label = category.getCategoryName();
+        this.path = category.getCategoryPath();
+        this.rootId = category.getRootId();
+        this.parentId = category.getParentId();
         this.children = category.getChildren().stream().map(TreeSelect::new).collect(Collectors.toList());
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
+
+    public Long getRootId() {
+        return rootId;
+    }
+
+    public void setRootId(Long rootId) {
+        this.rootId = rootId;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public Long getId()

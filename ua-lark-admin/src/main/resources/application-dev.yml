@@ -65,7 +65,7 @@ spring:
     host: r-uf6qo307pv0pe511hi.redis.rds.aliyuncs.com
     # 端口，默认为6379
     port: 6379
-    password: "!YukWnQ31r9T"
+    password: '!YukWnQ31r9T'
     # 数据库索引
     database: 4
     # 连接超时时间
