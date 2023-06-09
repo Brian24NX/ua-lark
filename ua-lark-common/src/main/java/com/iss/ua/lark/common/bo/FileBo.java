@@ -30,8 +30,8 @@ public class FileBo implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty(value = "租户Id")
-    private String tenantId;
+    @ApiModelProperty(value = "租户Code")
+    private String tenantCode;
 
     @ApiModelProperty(value = "原始文件名")
     private String originalFileName;

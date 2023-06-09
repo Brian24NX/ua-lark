@@ -32,8 +32,8 @@ public class FilePo implements Serializable {
     /**
      * 租户Id
      */
-    @TableField("tenant_id")
-    private String tenantId;
+    @TableField("tenant_code")
+    private String tenantCode;
 
     /**
      * 原始文件名

@@ -20,7 +20,7 @@ CREATE TABLE `t_store` (
 
 CREATE TABLE `sys_tenant_mapping_config` (
     `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
-    `tenant_id` bigint(20) unsigned NOT NULL COMMENT '租户ID',
+    `tenant_code` varchar(20) NOT NULL COMMENT '租户编号',
     `third_id` varchar(20) NOT NULL COMMENT '三方ID',
     `third_type` varchar(20) NOT NULL COMMENT '三方类型',
     `path` varchar(255) NOT NULL COMMENT '路径',
@@ -30,5 +30,5 @@ CREATE TABLE `sys_tenant_mapping_config` (
     `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     PRIMARY KEY (`id`),
     KEY `idx_third_type_third_id` (`third_type`,`third_id`),
-    KEY `idx_tenant_id` (`tenant_id`)
+    KEY `idx_tenant_code` (`tenant_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='租户映射配置表，类型和id可以映射成唯一的租户id';

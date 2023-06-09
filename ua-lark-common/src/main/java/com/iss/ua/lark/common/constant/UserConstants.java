@@ -8,6 +8,11 @@ package com.iss.ua.lark.common.constant;
 public class UserConstants
 {
     /**
+     * 租户id字段
+     */
+    public static final String TENANT_KEY = "tenant_code";
+
+    /**
      * 平台内系统用户的唯一标志
      */
     public static final String SYS_USER = "SYS_USER";
