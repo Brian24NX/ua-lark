@@ -11,6 +11,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +28,8 @@ import java.util.Objects;
 @Api(value = "文件上传相关接口")
 public class FileController {
     @Autowired
+    @Qualifier("OssFileServiceImpl")
+//    @Qualifier("S3FileServiceImpl")
     private FileService fileService;
 
     @Value("${aliyun.oss.defaultModuleName:sys_file}")
@@ -34,7 +37,7 @@ public class FileController {
 
     @PostMapping("/file/upload")
     @ApiOperation(value = "接口名称:上传文件", notes = "接口描述:上传文件")
-    public SimpleResult<List<FileBo>> upload(@RequestParam("file") MultipartFile[] file, @RequestHeader Map<String, String> headsMap){
+    public SimpleResult<List<FileBo>> upload(@RequestParam("file") MultipartFile[] file){
         FileBo build = FileBo.builder()
                              .moduleName(moduleName)
                              .build();

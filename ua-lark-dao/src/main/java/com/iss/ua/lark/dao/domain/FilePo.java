@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,10 +30,22 @@ public class FilePo implements Serializable {
     private Long id;
 
     /**
+     * 租户Id
+     */
+    @TableField("tenant_id")
+    private String tenantId;
+
+    /**
      * 原始文件名
      */
     @TableField("original_file_name")
     private String originalFileName;
+
+    /**
+     * 文件后最
+     */
+    @ApiModelProperty(value = "suffix")
+    private String suffix;
 
     /**
      * 文件名

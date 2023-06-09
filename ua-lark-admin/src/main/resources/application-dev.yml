@@ -98,6 +98,30 @@ wechat:
         secret: xxxxx
         token: 111
 
+aliyun:
+  oss:
+    bucketName: hanson-bucket
+    endPoint: oss-cn-shanghai.aliyuncs.com
+    accessKeyId: LTAI5tPYqF2SuwUzG1hFNFpo
+    accessKeySecret: c5VcDlK21GVhBC8A0LFZHTkyZsu46n
+    # 指定签名URL过期时间一年。
+    expiration-ms: 31536000000
+    defaultPath:
+    defaultModuleName: sys_file
+
+aws:
+  s3:
+    bucketName: hanson-bucket
+    endPoint: oss-cn-shanghai.aliyuncs.com
+    accessKeyId: LTAI5tPYqF2SuwUzG1hFNFpo
+    accessKeySecret: c5VcDlK21GVhBC8A0LFZHTkyZsu46n
+    regionName: cn-north-1
+    # 指定签名URL过期时间一年。
+    expiration-ms: 31536000000
+    defaultPath:
+    defaultModuleName: sys_file
+
+
 lark:
   appId: cli_a4faccf706f8902f
   appSecret: TB7fVlKkPKJbPn2JSFjGqgFG1sC8WfpY

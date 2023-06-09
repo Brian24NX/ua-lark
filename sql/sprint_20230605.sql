@@ -16,3 +16,19 @@ CREATE TABLE `t_store` (
  INDEX `idx_code` (code),
  INDEX `idx_name` (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='店铺表';
+
+
+CREATE TABLE `sys_tenant_mapping_config` (
+    `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `tenant_id` bigint(20) unsigned NOT NULL COMMENT '租户ID',
+    `third_id` varchar(20) NOT NULL COMMENT '三方ID',
+    `third_type` varchar(20) NOT NULL COMMENT '三方类型',
+    `path` varchar(255) NOT NULL COMMENT '路径',
+    `url` varchar(255) DEFAULT NULL COMMENT 'URL',
+    `size` bigint(20) unsigned DEFAULT NULL COMMENT '文件大小',
+    `comment` varchar(500) DEFAULT NULL COMMENT '备注',
+    `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    PRIMARY KEY (`id`),
+    KEY `idx_third_type_third_id` (`third_type`,`third_id`),
+    KEY `idx_tenant_id` (`tenant_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='租户映射配置表，类型和id可以映射成唯一的租户id';

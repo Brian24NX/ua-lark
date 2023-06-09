@@ -30,6 +30,9 @@ spring:
     encoding: utf-8
     # 国际化资源文件路径（配置文件路径）
     basename: i18n/validations,i18n/materialApplication
+  main:
+    allow-bean-definition-overriding: true
+
 mybatis-plus:
   type-enums-package: com.hanson.mybatis.enums.**;com.iss.hanson.common.enums.**;
   type-handlers-package: com.hanson.mybatis.handler.**

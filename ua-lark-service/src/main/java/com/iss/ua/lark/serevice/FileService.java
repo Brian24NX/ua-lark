@@ -10,9 +10,8 @@ import java.util.List;
 
 public interface FileService {
     List<FileBo> upload(MultipartFile[] files, FileBo fileBo);
-    FilePo upload(MultipartFile file, FileBo fileBo) throws IOException;
+    FilePo upload(MultipartFile file, FileBo fileBo);
     InputStream download(String fileId);
     InputStream download(FilePo FilePo);
-    InputStream downloads(List<FilePo> FilePo);
     FilePo getFilePo(String fileId);
 }
