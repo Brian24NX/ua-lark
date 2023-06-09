@@ -6,9 +6,9 @@ spring:
         druid:
             # 主库数据源
             master:
-                url: jdbc:mysql://xxxxx:3306/carrier_wecom?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-                username: root
-                password: xxxx
+                url: jdbc:mysql://ua-rds-uat-1.cgpgmosam5t2.ap-southeast-1.rds.amazonaws.com:3306/ua_lark?allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+                username: admin
+                password: F7t*FXW1iiYZ
             # 从库数据源
             slave:
                 # 从数据源开关/默认关闭
@@ -62,13 +62,14 @@ spring:
     # redis 配置
     redis:
         # 地址
-        host: xxxxx
+        host: ua-redis-uat-1-001.ua-redis-uat-1.u4xhwi.apse1.cache.amazonaws.com
         # 端口，默认为6379
         port: 6379
         # 数据库索引
         database: 0
+        username: uaredis
         # 密码
-        password: xxxx
+        password: "on ~* +@all"
         # 连接超时时间
         timeout: 10s
         lettuce:
@@ -90,7 +91,6 @@ carrier:
 #UA-LARK企业微信配置
 wechat:
     cp:
-        # Carrier企业微信企业信息
         corpId: ww228103260fb584dc
         appConfigs:
             # UA-LARK企微管理后台
@@ -98,3 +98,11 @@ wechat:
               agentId: 1000007
               secret: zv0gPZg1pNS019k7C2NTGXOWNnq7MvKox6tfIRql7u4
               token: 111
+
+
+lark:
+    appId: cli_a408039250785009
+    appSecret: g6cdyC81rk7w2JC2MEueHc7PTSLR74b3
+    jwt:
+        expireTime: 3600000
+        key: under-armour-jwt-test

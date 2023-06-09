@@ -10,9 +10,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://xxx.xxx.xxx.xxx:3306/XXXX?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&autoReconnect=true&failOverReadOnly=false
-      username: root
-      password: D7PTYSfZo5Ef
+      url: jdbc:mysql://ua-rds-uat-1.cgpgmosam5t2.ap-southeast-1.rds.amazonaws.com:3306/ua_lark?allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+      username: admin
+      password: F7t*FXW1iiYZ
       driver-class-name: com.mysql.cj.jdbc.Driver
       initialSize: 15
       minIdle: 10
@@ -27,3 +27,65 @@ spring:
       keepAlive: true
       maxPoolPreparedStatementPerConnectionSize: 50
       filters: stat,wall,log4j2
+  # redis配置
+  redis:
+    host: ua-redis-uat-1-001.ua-redis-uat-1.u4xhwi.apse1.cache.amazonaws.com
+    username: uaredis
+    password: "on ~* +@all"
+    port: 6379
+    #    host: cheftalk-redis-stg.54xvis.0001.cnn1.cache.amazonaws.com.cn
+    # 目前官网无法联通aws redis,联通后需替换
+    database: 0
+    pool:
+      max-idle: 8               ## 连接池中的最大空闲连接
+      min-idle: 1               ## 连接池中的最小空闲连接
+      max-active: 8             ## 连接池最大连接数（使用负值表示没有限制）
+      max-wait: -1              ## 连接池最大阻塞等待时间（使用负值表示没有限制）
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework: INFO
+
+com:
+  hanson:
+    user-interceptor:
+      excludePathPatterns: /favicon.ico,/file/upload,/api/v1/i18n,/login
+    sign-filter:
+      excludePathPatterns: /favicon.ico,/file/upload,/api/v1/i18n
+    tenant-ignore-table: sys_file,sys_user
+hanson:
+  trace:
+    exclude: /file/upload
+
+aliyun:
+  oss:
+    bucketName: hanson-bucket
+    endPoint: oss-cn-shanghai.aliyuncs.com
+    accessKeyId: LTAI5tPYqF2SuwUzG1hFNFpo
+    accessKeySecret: c5VcDlK21GVhBC8A0LFZHTkyZsu46n
+    # 指定签名URL过期时间一年。
+    expiration-ms: 31536000000
+    defaultPath:
+    defaultModuleName: sys_file
+
+aws:
+  s3:
+    bucketName: hanson-bucket
+    endPoint: oss-cn-shanghai.aliyuncs.com
+    accessKeyId: LTAI5tPYqF2SuwUzG1hFNFpo
+    accessKeySecret: c5VcDlK21GVhBC8A0LFZHTkyZsu46n
+    regionName: cn-north-1
+    # 指定签名URL过期时间一年。
+    expiration-ms: 31536000000
+    defaultPath:
+    defaultModuleName: sys_file
+
+lark:
+  appId: cli_a408039250785009
+  appSecret: g6cdyC81rk7w2JC2MEueHc7PTSLR74b3
+  jwt:
+    expireTime: 3600000
+    key: under-armour-jwt-test
+
